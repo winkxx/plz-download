@@ -19,4 +19,11 @@ XXX_password: ${{ secrets.XXX_password }}
 
 ## 定制指南
 - 下载文件部分 查看[.github\workflows\download.yml](https://github.com/ame-yu/plz-download/blob/master/.github/workflows/download.yml)
-- 上传文件部分 查看[upload.js](https://github.com/ame-yu/plz-download/blob/master/upload.js)
+- 上传文件部分 查看[upload.js](https://github.com/ame-yu/plz-download/blob/master/upload.py)
+
+## 工作流程
+1. Wiki被更改触发Action事件
+2. 寻找最近被更改的Wiki, 把Wiki名称作为网盘的名称
+3. 用wget下载Wiki给的URL
+4. 寻找环境变量 `网盘名称_url`、`网盘名称_username`、`网盘名称_password`
+5. 程序上传`download`文件夹里所有文件（不包含文件夹）
