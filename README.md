@@ -1,30 +1,27 @@
 # plz-download
-Github Action 离线下载到支持WebDAV的网盘
+aria2 下载 + rclone 上传 = Github 离线下载
 
-Using github action download resource then upload to netdisk.
-
-![preview](https://raw.githubusercontent.com/ame-yu/plz-download/master/docs/preview.gif)
-
-# 用途？
-为代码、发行包做离线下载。
-
-请勿滥用Github资源，谢谢🙏🏻
-# 使用？
+![example](https://raw.githubusercontent.com/ame-yu/plz-download/main/docs/example.gif)
+# Useage
 1. Fork这个项目, 点击项目workflow并启用（以下坚果云为例）
-2. settings->Secrets 
-    - nutstore_url: DAV目录 e.g.https://dav.jianguoyun.com/dav/download
-    - nutstore_username 用户名
-    - nutstore_password 密码
-3. 新建wiki页面nutstore
-4. 每次要下载时编辑Wiki的nutstore页面写上下载地址并保存页面(可多行)
-5. 稍后前往网盘下载
-> nutstore可以替换为box、yandex，如果是自建网盘或其他网盘请参照[添加指南](https://github.com/ame-yu/plz-download/tree/master/docs) <br>
-> 添加后不同wiki页面填写会下载到不同的网盘<br>
+2. settings->Secrets 设置 RCLONE_CONF
+    ```
+    [NutStore]
+    type = webdav
+    url = https://dav.jianguoyun.com/dav/文件夹的名称
+    vendor = other
+    user = 你的用户名
+    pass = 应用授权码（账户信息->安全选项->第三方应用管理）
+    ```
+3. 新建wiki页面NutStore(页面名称要和配置文件节点名称保持一致)
+4. 每次要下载时编辑Wiki的NutStore页面写上下载地址并保存页面(可多行)
 
-### Tips 
-本质上使用了wget,所以遇到不包含文件名的下载链接可以考虑重命名来避免错误
-```bash
-"https://xxxxxx.com/download?123*(#*&^!*&#" -O download/修改这里的文件名
-```
+>[进阶指南](https://github.com/ame-yu/plz-download/tree/main/docs)
+
+# Licence
+本项目基于 GLWTPL (Good Luck With That Public License) 许可证开源。
+
+This project under the [Good Luck With That Public License](https://github.com/me-shaon/GLWTPL)
+
 
 

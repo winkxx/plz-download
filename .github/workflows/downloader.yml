@@ -1,0 +1,36 @@
+name: AutoDownloader
+on:
+  gollum
+jobs:
+  AutoDownloaderProcess:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.1.0
+    - name: Rclone Install
+      run: curl https://rclone.org/install.sh | sudo bash
+    - name: Aria2 Install
+      run: sudo apt install -y aria2
+    - name: Inject Rclone&Aria2 config
+      run: |
+        mkdir -p ~/.config/rclone/
+        cat >  ~/.config/rclone/rclone.conf  << EOF
+        ${{ secrets.RCLONE_CONF }}
+        EOF
+        mkdir -p ~/.aria2/
+        cat >  ~/.aria2/aria2.conf  << EOF
+        ${{ secrets.ARIA2_CONF }}
+        EOF
+    - name: Aria2_Downloading_File
+      run: |
+        git clone "https://github.com/${GITHUB_REPOSITORY}.wiki.git"
+        wiki=`echo $GITHUB_REPOSITORY | cut -d "/" -f 2`.wiki
+        cd $wiki
+        mdfile=`git log --pretty=format: -1 --name-only *.md`
+        cd ..
+        aria2c --seed-time=0 -d downloads `cat $wiki/$mdfile | xargs`
+        echo "${mdfile:0:-3}:" > DEST
+    - name: Rclone Synchronizing file
+      run: |
+        rclone copy downloads `cat DEST`
+
+
