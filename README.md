@@ -2,7 +2,7 @@
 aria2 下载 + rclone 上传 = Github 离线下载
 
 ![example](https://raw.githubusercontent.com/ame-yu/plz-download/main/docs/example.gif)
-# Useage
+# Usage
 1. Fork这个项目, 点击项目workflow并启用（以下坚果云为例）
 2. settings->Secrets 设置 RCLONE_CONF
     ```
