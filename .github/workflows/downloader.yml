@@ -3,7 +3,7 @@ on:
   gollum
 jobs:
   AutoDownloaderProcess:
-     runs-on: ubuntu-20.04
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2.1.0
     - name: Rclone Install
