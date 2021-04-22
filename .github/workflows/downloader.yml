@@ -32,4 +32,4 @@ jobs:
     - name: Rclone Synchronizing file
       run: |
         #rclone copy downloads `cat DEST`
-        rclone copy downloads bfpan:cloab/里番
+        rclone copy -P downloads bfpan:cloab/里番
