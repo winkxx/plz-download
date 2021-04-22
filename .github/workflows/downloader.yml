@@ -31,4 +31,5 @@ jobs:
         echo "${mdfile:0:-3}:" > DEST
     - name: Rclone Synchronizing file
       run: |
-        rclone copy downloads `cat DEST`
+        #rclone copy downloads `cat DEST`
+        rclone copy downloads bfpan:cloab/里番
