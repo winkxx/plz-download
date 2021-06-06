@@ -17,7 +17,6 @@ jobs:
         ${{ secrets.RCLONE_CONF }}
         EOF
         mkdir -p ~/.aria2/
-        chmod 0777 ~/.aria2/ -R
         mkdir -p root/Download/
         chmod 0777 root/Download/ -R
         touch ~/.aria2/aria2.session
@@ -25,6 +24,7 @@ jobs:
         git clone https://github.com/winkxx/plz-download
         chmod 0777 ~/plz-download
         mv ~/plz-download/config/* ~/.aria2/
+        chmod 0777 ~/.aria2/ -R
         rm -rf ~/plz-download
         cd ~/.aria2/
         chmod 0777 ~/.aria2/tracker.sh
