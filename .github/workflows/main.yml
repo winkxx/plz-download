@@ -26,9 +26,9 @@ jobs:
         cd ~/
         git clone https://github.com/winkxx/plz-download
         chmod 0777 ~/plz-download -R
-        mv ~/plz-download/config/* ~/.aria2/
-        chmod 777 ~/.aria2/ -R
-        #chmod 0777 ~/.aria2/aria2.session
+        cp -r /~/plz-download/config/* /~/.aria2/
+        #mv ~/plz-download/config/* ~/.aria2/
+        chmod 0777 ~/.aria2/ -R
         rm -rf ~/plz-download
         cd ~/.aria2/
         chmod 0777 ~/.aria2/tracker.sh
