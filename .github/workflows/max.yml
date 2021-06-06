@@ -2,7 +2,7 @@ name: AutoDownloader-max
 #自动更新trcker版本
 on:
   #workflow_dispatch: # 手动触发
-  gollum
+  #gollum
 jobs:
   AutoDownloaderProcess:
     runs-on: ubuntu-20.04
