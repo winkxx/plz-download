@@ -39,7 +39,7 @@ jobs:
         cd $wiki
         mdfile=`git log --pretty=format: -1 --name-only *.md`
         cd ..
-        aria2c --seed-time=0  `cat $wiki/$mdfile | xargs`
+        aria2c   `cat $wiki/$mdfile | xargs`
         echo "${mdfile:0:-3}:" > DEST
         
     - name: Rclone Synchronizing file
