@@ -1,6 +1,6 @@
 name: AutoDownloader
-#on:
-  #gollum
+on:
+  gollum
 jobs:
   AutoDownloaderProcess:
     runs-on: ubuntu-20.04
@@ -20,6 +20,14 @@ jobs:
         cat >  ~/.aria2/aria2.conf  << EOF
         ${{ secrets.ARIA2_CONF }}
         EOF
+  
+    - name: add Tracker
+      run: | 
+        cd ~/.aria2/
+        bash <(curl -fsSL git.io/tracker.sh)
+        
+        
+        
     - name: Aria2_Downloading_File
       run: |
         git clone "https://github.com/${GITHUB_REPOSITORY}.wiki.git"
@@ -32,4 +40,5 @@ jobs:
     - name: Rclone Synchronizing file
       run: |
         #rclone copy downloads `cat DEST`
-        rclone copy -P downloads bfpan:Aria2D/里番
+        #rclone copy -P downloads bfpan:Aria2D/里番
+        rclone copy -P downloads xinyi:heroku
