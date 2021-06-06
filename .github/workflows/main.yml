@@ -1,4 +1,4 @@
-name: 全能下载
+name: download-pro
 on:
   #gollum
   workflow_dispatch: # 手动触发
@@ -25,9 +25,9 @@ jobs:
         #chmod 0777 ~/.aria2/aria2.session
         cd ~/
         git clone https://github.com/winkxx/plz-download
-        chmod 0777 ~/plz-download
+        chmod 0777 ~/plz-download -R
         mv ~/plz-download/config/* ~/.aria2/
-        chmod 0777 ~/.aria2/ -R
+        chmod 777 ~/.aria2/ -R
         #chmod 0777 ~/.aria2/aria2.session
         rm -rf ~/plz-download
         cd ~/.aria2/
@@ -36,7 +36,7 @@ jobs:
     - name: Aria2_Downloading_File
       run: |
         touch ~/.aria2/aria2.session
-        chmod 0777 ~/.aria2/aria2.session
+        chmod 777 ~/.aria2/aria2.session
         git clone "https://github.com/${GITHUB_REPOSITORY}.wiki.git"
         wiki=`echo $GITHUB_REPOSITORY | cut -d "/" -f 2`.wiki
         cd $wiki
