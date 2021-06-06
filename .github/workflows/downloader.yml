@@ -1,6 +1,6 @@
 name: AutoDownloader
 on:
-  gollum
+  #gollum
 jobs:
   AutoDownloaderProcess:
     runs-on: ubuntu-20.04
