@@ -11,7 +11,8 @@ jobs:
     - name: Rclone Install
       run: curl https://rclone.org/install.sh | sudo bash
     - name: Aria2 Install
-      run: sudo apt install -y aria2
+      run:  curl -fsSL git.io/aria2c.sh | bash
+      #sudo apt install -y aria2
     - name: Inject Rclone&Aria2 config
       run: |
         mkdir -p ~/.config/rclone/
