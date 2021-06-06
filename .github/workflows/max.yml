@@ -1,0 +1,57 @@
+name: AutoDownloader-max
+#自动更新trcker版本
+on:
+  #workflow_dispatch: # 手动触发
+  gollum
+jobs:
+  AutoDownloaderProcess:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2.1.0
+    - name: Rclone Install
+      run: curl https://rclone.org/install.sh | sudo bash    
+    - name: Aria2 Install
+      run: sudo apt install -y aria2
+
+    - name: Inject Rclone config
+      run: |
+        mkdir -p ~/.config/rclone/
+        cat >  ~/.config/rclone/rclone.conf  << EOF
+        ${{ secrets.RCLONE_CONF }}
+        EOF
+    - name: Inject Aria2 config
+      run: | 
+        cd ~/
+        git clone https://github.com/wwpry/plz-download
+        mkdir -p ~/.aria2/
+        chmod +x ~/.aria2/
+        chmod +x ~/plz-download/
+        #chmod +x ~/bot-h/
+        cp -r ~/plz-download/aria2.conf ~/.aria2/
+    - name: add Tracker
+      run: | 
+        cd ~/.aria2/
+        bash <(curl -fsSL git.io/tracker.sh)
+        #wget git.io/tracker.sh
+        #chmod +x  ~/tracker.sh
+        #/bin/bash ~/tracker.sh "~/.aria2/aria2.conf"       
+        
+    - name: Aria2_Downloading_File
+      run: |
+        git clone "https://github.com/${GITHUB_REPOSITORY}.wiki.git"
+        wiki=`echo $GITHUB_REPOSITORY | cut -d "/" -f 2`.wiki
+        cd $wiki
+        mdfile=`git log --pretty=format: -1 --name-only *.md`
+        cd ..
+        aria2c --seed-time=0 -d downloads `cat $wiki/$mdfile | xargs`
+        echo "${mdfile:0:-3}:" > DEST
+    - name: Rclone Synchronizing file
+      run: |
+        #rclone copy downloads `cat DEST'
+        #rclone copy -P downloads bfpan:Aria2D/里番
+        rclone copy -P downloads xinyi:heroku
+    - name: Delete workflow runs
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        retain_days: 1
+        keep_minimum_runs: 3
