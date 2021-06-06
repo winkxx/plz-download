@@ -19,7 +19,7 @@ jobs:
         cd ~/
         mkdir -p ~/.aria2/
         git clone https://github.com/winkxx/plz-download
-        chmod 0777 /~/plz-download
+        chmod 0777 ~/plz-download
         mv /plz-download/config/* ~/.aria2/
         rm -rf /plz-download
         cd ~/.aria2/
