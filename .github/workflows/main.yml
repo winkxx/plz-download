@@ -11,7 +11,10 @@ jobs:
     - name: Rclone Install
       run: curl https://rclone.org/install.sh | sudo bash
     - name: Aria2 Install
-      run:  curl -fsSL git.io/aria2c.sh | bash
+      run: |
+        git clone https://github.com/P3TERX/Aria2-Pro-Core
+        chmod +x /home/runner/Aria2-Pro-Core -R
+        /bin/bash /home/runner/Aria2-Pro-Core/aria2-install.sh
       #sudo apt install -y aria2
     - name: Inject Rclone&Aria2 config
       run: |
