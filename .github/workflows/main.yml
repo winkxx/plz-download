@@ -1,8 +1,8 @@
 name: download-pro
 #自动更新trcker版本
 on:
-  #gollum
-  workflow_dispatch: # 手动触发
+  gollum
+  #workflow_dispatch: # 手动触发
 jobs:
   AutoDownloaderProcess:
     runs-on: ubuntu-20.04
@@ -11,11 +11,7 @@ jobs:
     - name: Rclone Install
       run: curl https://rclone.org/install.sh | sudo bash
     - name: Aria2 Install
-      run: |
-        git clone https://github.com/P3TERX/Aria2-Pro-Core
-        chmod +x ~/Aria2-Pro-Core -R
-        /bin/bash ~/Aria2-Pro-Core/aria2-install.sh
-      #sudo apt install -y aria2
+      run: sudo apt install -y aria2
     - name: Inject Rclone&Aria2 config
       run: |
         mkdir -p ~/.config/rclone/
