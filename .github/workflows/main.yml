@@ -1,6 +1,7 @@
 name: 全能下载
 on:
-  workflow_dispatch: # 手动触发
+  gollum
+  #workflow_dispatch: # 手动触发
 jobs:
   AutoDownloaderProcess:
     runs-on: ubuntu-20.04
