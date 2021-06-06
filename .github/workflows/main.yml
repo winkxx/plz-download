@@ -30,7 +30,3 @@ jobs:
         cd ..
         aria2c --seed-time=0 -d downloads `cat $wiki/$mdfile | xargs`
         echo "${mdfile:0:-3}:" > DEST
-    - name: Rclone Synchronizing file
-      run: |
-        #rclone copy downloads `cat DEST`
-        rclone copy -P downloads bfpan:Aria2D/里番
