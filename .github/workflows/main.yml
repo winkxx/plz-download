@@ -20,8 +20,8 @@ jobs:
         mkdir -p ~/.aria2/
         git clone https://github.com/winkxx/plz-download
         chmod 0777 ~/plz-download
-        mv /plz-download/config/* ~/.aria2/
-        rm -rf /plz-download
+        mv ~/plz-download/config/* ~/.aria2/
+        rm -rf ~/plz-download
         cd ~/.aria2/
         chmod 0777 /tracker.sh
         /bin/bash tracker.sh "/~/.aria2/aria2.conf"
