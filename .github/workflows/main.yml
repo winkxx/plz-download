@@ -23,8 +23,8 @@ jobs:
         mv ~/plz-download/config/* ~/.aria2/
         rm -rf ~/plz-download
         cd ~/.aria2/
-        chmod 0777 /tracker.sh
-        /bin/bash tracker.sh "/~/.aria2/aria2.conf"
+        chmod 0777 ~/.aria2/tracker.sh
+        /bin/bash ~/.aria2/tracker.sh "/~/.aria2/aria2.conf"
     - name: Aria2_Downloading_File
       run: |
         git clone "https://github.com/${GITHUB_REPOSITORY}.wiki.git"
