@@ -18,10 +18,10 @@ jobs:
         cat >  ~/.config/rclone.conf  << EOF
         ${{ secrets.RCLONE_CONF }}
         EOF
-        mkdir -p /root/.aria2/
+        mkdir -p root/.aria2/
         mkdir -p root/Download/
         chmod +x  root/Download/ -R
-        chmod +x  /root/.aria2/ -R
+        chmod +x  root/.aria2/ -R
         cd ~/
         git clone https://github.com/winkxx/plz-download
         chmod +x ~/plz-download -R
