@@ -1,4 +1,4 @@
-name: AutoDownloader
+name: 全能下载
 on:
   workflow_dispatch: # 手动触发
 jobs:
@@ -13,13 +13,14 @@ jobs:
     - name: Inject Rclone&Aria2 config
       run: |
         mkdir -p ~/.config/rclone/
-        cat >  ~/.config/rclone/rclone.conf  << EOF
+        cat >  ~/.config/rclone.conf  << EOF
         ${{ secrets.RCLONE_CONF }}
         EOF
+        cd ~/
         mkdir -p ~/.aria2/
-        cat >  ~/.aria2/aria2.conf  << EOF
-        ${{ secrets.ARIA2_CONF }}
-        EOF
+        git clone https://github.com/winkxx/plz-download
+        mv /plz-download/config/* ~/.aria2/
+        rm -rf /plz-download
     - name: Aria2_Downloading_File
       run: |
         git clone "https://github.com/${GITHUB_REPOSITORY}.wiki.git"
