@@ -28,6 +28,7 @@ jobs:
         chmod 0777 ~/plz-download
         mv ~/plz-download/config/* ~/.aria2/
         chmod 0777 ~/.aria2/ -R
+        chmod 0777 ~/.aria2/aria2.session
         rm -rf ~/plz-download
         cd ~/.aria2/
         chmod 0777 ~/.aria2/tracker.sh
@@ -39,5 +40,5 @@ jobs:
         cd $wiki
         mdfile=`git log --pretty=format: -1 --name-only *.md`
         cd ..
-        aria2c --seed-time=0 -d downloads `cat $wiki/$mdfile | xargs`
+        aria2c --seed-time=0  `cat $wiki/$mdfile | xargs`
         echo "${mdfile:0:-3}:" > DEST
