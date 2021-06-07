@@ -38,9 +38,8 @@ jobs:
         
     - name: Rclone Synchronizing file
       run: |
-        #rclone copy downloads `cat DEST'
-        #rclone copy -P downloads bfpan:Aria2D/里番
         rclone copy -P downloads xinyi:heroku
+
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
       with:
