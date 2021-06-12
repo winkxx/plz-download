@@ -12,6 +12,8 @@ jobs:
       run: curl https://rclone.org/install.sh | sudo bash
     - name: Aria2 Install
       run: sudo apt install -y aria2
+    - name: remove download
+      run: rm -rf /home/runner/downloads
     - name: Inject Rclone&Aria2 config
       run: |
         mkdir -p ~/.config/rclone/
