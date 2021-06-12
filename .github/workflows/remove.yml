@@ -1,4 +1,4 @@
-name: download-pro
+name: remove
 #自动更新trcker版本
 on:
   #gollum
