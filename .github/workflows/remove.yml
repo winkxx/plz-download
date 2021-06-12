@@ -1,0 +1,18 @@
+name: download-pro
+#自动更新trcker版本
+on:
+  #gollum
+  workflow_dispatch: # 手动触发
+jobs:
+  AutoDownloaderProcess:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2.1.0
+    - name: Rclone Install
+      run: curl https://rclone.org/install.sh | sudo bash
+    - name: Aria2 Install
+      run: sudo apt install -y aria2
+    - name: remove
+      run: |
+         rm -rf /home/runner/downloads
+        
