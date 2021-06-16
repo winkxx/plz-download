@@ -15,9 +15,15 @@ aria2 下载 + rclone 上传 = Github 离线下载
     ```
 3. 新建wiki页面NutStore(页面名称要和配置文件节点名称保持一致)
 4. 每次要下载时编辑Wiki的NutStore页面写上下载地址并保存页面(可多行)
-5. 本版本修改了Rclone位置和Aria2的Conf为自用修改版
 
->[进阶指南](https://github.com/ame-yu/plz-download/tree/main/docs)
+# 本版本修改为自动添加trackers以及aria2.conf
+1. aria2.conf参考为P大的https://github.com/P3TERX/aria2.conf
+2. 修改rclone为手动上传，不用conf中的Sh
+3. workflow中最后得改为自己的rclone 盘，删掉我自用的，放上自己的盘名即可。
+
+# 注意事项
+1. 不要滥用，没速度就删除运行。
+2. 经过测试最大能下载15G，再大可能就会报错。
 
 # Licence
 本项目基于 GLWTPL (Good Luck With That Public License) 许可证开源。
