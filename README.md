@@ -25,6 +25,7 @@ aria2 下载 + rclone 上传 = Github 离线下载
 1. 不要滥用，没速度就删除运行。
 2. 经过测试最大能下载15G，再大可能就会报错。
 
+# 如果能帮到你，Star一下鼓励一下呗
 # Licence
 本项目基于 GLWTPL (Good Luck With That Public License) 许可证开源。
 
