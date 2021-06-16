@@ -15,6 +15,7 @@ aria2 下载 + rclone 上传 = Github 离线下载
     ```
 3. 新建wiki页面NutStore(页面名称要和配置文件节点名称保持一致)
 4. 每次要下载时编辑Wiki的NutStore页面写上下载地址并保存页面(可多行)
+5. 本版本修改了Rclone位置和Aria2的Conf为自用修改版
 
 >[进阶指南](https://github.com/ame-yu/plz-download/tree/main/docs)
 
