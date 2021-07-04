@@ -42,7 +42,7 @@ jobs:
         
     - name: Rclone Synchronizing file
       run: |
-        rclone copy -P /home/runner/downloads bfpan:目录
+        rclone copy -P /home/runner/downloads xinyi:heroku
          #rclone copy -P /home/runner/downloads bfpan:Aria2D/里番
     - name: Delete workflow runs
       uses: GitRML/delete-workflow-runs@main
